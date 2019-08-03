@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
       .subscribe((data: any) => { 
         console.log(data);
       }, (errorService) => {
-          console.log(this.todoListservice.getAllTaskFromMock());
+        
           console.log('Error in service');
       });
 
