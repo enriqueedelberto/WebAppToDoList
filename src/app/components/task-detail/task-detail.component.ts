@@ -34,7 +34,7 @@ export class TaskDetailComponent implements OnInit {
     console.log(this.task);
 
     this.service.saveTask(this.task);
-    this.service.redirect('/home');
+    
     
     
   }

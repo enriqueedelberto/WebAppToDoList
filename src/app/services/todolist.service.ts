@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Task } from '../models/task';
+import { debug } from 'util';
+import { User } from '../models/user';
 
 
 const httpOptions = {
@@ -34,15 +36,44 @@ export class TodolistService {
 
 
    //Servicio GetAllTasks
-  getAllTask() { 
-    return this.getQuery(`api/Task/GetTask`); 
+  getAllTask(task: Task, pageIndex:number = 1, pageSize: number = 5 ) {
+    
+    let params = new HttpParams();
+
+    // Begin assigning parameters
+    if (task) {
+      params = params.append('task_id', task.id_task);
+    }
+    
+
+    return this.http.get(`${urlApi}Task/GetTasks`, { params: params}); 
   }
   
   saveTask(task: Task) { 
-    return this.http.post<Task>(urlApi, task, httpOptions); 
+    debugger
+   this.http.post<Task>(`${urlApi}Task/saveTask`, task)
+      .subscribe(() => this.redirect('/home'));
   }
 
-  
+ updateTask(task: Task) { 
+    debugger
+   this.http.post<Task>(`${urlApi}Task/saveTask`, task)
+      .subscribe(() => this.redirect('/home'));
+  }
+
+   //Servicio GetAllTasks
+   getAllUsers(user: User, pageIndex:any = "1", pageSize: any = "5" ) {
+    
+    let params = new HttpParams();
+
+    // Begin assigning parameters
+    
+    params = params.append('pageIndex', pageIndex);
+    params = params.append('pageSize', pageSize);
+    
+
+    return this.http.get(`${urlApi}User/GetUsers`, { params: params}); 
+  }
   
 
 }

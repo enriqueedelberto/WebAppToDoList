@@ -1,9 +1,14 @@
 export class User {   
-    id_user: number;
-    nm_user: string;
-    cd_user: string;
-    createdOnDate: Date;
-    lasModifiedOnDate: Date;
-    pageIndex: number;
-    pageSize: number;
+
+    constructor( public id_user: number,
+        public nm_user: string,
+        public cd_user: string,
+        public createdOnDate: Date,
+        public lasModifiedOnDate: Date,
+        public pageIndex: number,
+        public pageSize: number) { 
+
+
+    }
+   
  }
