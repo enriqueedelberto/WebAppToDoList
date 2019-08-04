@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -10,14 +11,14 @@ import { TodolistService } from 'src/app/services/todolist.service';
   styleUrls: ['./task-detail.component.css']
 })
 export class TaskDetailComponent implements OnInit {
-  task: Task;
+  @Input() task: Task;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: TodolistService,
     private location: Location) {
-    
     this.task = new Task('','','','','','');
+    
      }
 
  
@@ -30,6 +31,9 @@ export class TaskDetailComponent implements OnInit {
   }
 
   save(): void { 
+    console.log(this.task);
+
+    this.service.saveTask(this.task);
     this.service.redirect('/home');
     
     

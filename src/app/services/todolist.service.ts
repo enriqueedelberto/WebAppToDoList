@@ -29,7 +29,7 @@ export class TodolistService {
   }
   
   getQuery(query: string) { 
-    return this.http.get(urlApi, httpOptions);
+    return this.http.get(urlApi + query, httpOptions);
   }
 
 
@@ -37,7 +37,7 @@ export class TodolistService {
   getAllTask() { 
     return this.getQuery(`api/Task/GetTask`); 
   }
-
+  
   saveTask(task: Task) { 
     return this.http.post<Task>(urlApi, task, httpOptions); 
   }

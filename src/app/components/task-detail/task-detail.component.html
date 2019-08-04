@@ -3,23 +3,23 @@
         <div class="form-row">
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <label for="inputEmail4">Code</label>
-                <input class="form-control" id="inputEmail4" placeholder="">
+                <input [(ngModel)]="task.cd_task" class="form-control" id="inputEmail4" placeholder="" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <label for="inputPassword4">Title</label>
-                <input type="text" class="form-control" id="inputPassword4" placeholder="">
+                <input [(ngModel)]="task.title_task" type="text" class="form-control" id="inputPassword4" placeholder="" [ngModelOptions]="{standalone: true}">
             </div>
         </div>
         <div class="form-group">
             <label for="inputAddress">Description</label>
-            <textarea type="text" class="form-control" id="inputAddress" placeholder=""></textarea>
+            <textarea type="text" [(ngModel)]="task.desc_task" class="form-control" id="inputAddress" placeholder="" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
 
         <div class="form-row">
 
             <div class="form-group col-lg-4 col-md-4">
                 <label for="inputState">Status</label>
-                <select id="inputState" class="form-control">
+                <select id="inputState" class="form-control" [(ngModel)]="task.status_task" [ngModelOptions]="{standalone: true}">
           <option selected>Choose...</option>
           <option>...</option>
         </select>
@@ -27,7 +27,7 @@
 
             <div class="form-group col-lg-4 col-md-4">
                 <label for="inputState">Assign to</label>
-                <select id="inputState" class="form-control">
+                <select id="inputState" class="form-control" [(ngModel)]="task.cd_user" [ngModelOptions]="{standalone: true}">
           <option selected>Choose...</option>
           <option>...</option>
         </select>
