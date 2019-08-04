@@ -30,6 +30,10 @@ export class TodolistService {
     return this.getQuery(`api/Task/GetTask`); 
   }
 
+  saveTask(task: Task) { 
+    return this.http.post<Task>(urlApi, task, httpOptions); 
+  }
+
   
   
 

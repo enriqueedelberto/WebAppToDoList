@@ -10,6 +10,7 @@ export const ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'users', component: UsersComponent },
     { path: 'newtask', component: TaskDetailComponent },
+    { path: 'newtask/:id_task', component: TaskDetailComponent },
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: '**', pathMatch: 'full', redirectTo: 'home'}
 
