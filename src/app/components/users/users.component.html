@@ -1,0 +1,23 @@
+<div class="mat-elevation-z8">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Code</th>
+                <th scope="col">Name</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of users">
+                <th scope="row">{{item.id_user}}</th>
+                <td>{{item.cd_user}}</td>
+                <td>{{item.nm_user}}</td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>

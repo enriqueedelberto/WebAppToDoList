@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TodolistService } from '../../services/todolist.service';
+import { Task } from '../../models/task';
+import { TASKS } from '../../services/mock-service';
+
 
 @Component({
   selector: 'app-home',
@@ -8,6 +11,7 @@ import { TodolistService } from '../../services/todolist.service';
   styles: []
 })
 export class HomeComponent implements OnInit {
+  tasks = TASKS;
 
   constructor(private todoListservice: TodolistService) { 
     this.todoListservice.getAllTask()

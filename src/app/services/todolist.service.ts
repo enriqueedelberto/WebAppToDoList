@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Task } from '../models/task';
-import { TASK } from './mock-service';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -30,9 +30,7 @@ export class TodolistService {
     return this.getQuery(`api/Task/GetTask`); 
   }
 
-  getAllTaskFromMock() { 
-    return TASK;
-  }
+  
   
 
 }
