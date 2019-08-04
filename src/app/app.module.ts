@@ -17,6 +17,7 @@ import { TodolistService } from './services/todolist.service';
 import { ROUTES } from './app.route';
 import { CardsComponent } from './components/shared/cards/cards.component';
 import { UsersComponent } from './components/users/users.component';
+import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { UsersComponent } from './components/users/users.component';
     HomeComponent,
     NavbarComponent,
     CardsComponent,
-    UsersComponent
+    UsersComponent,
+    TaskDetailComponent
   ],
   imports: [
     BrowserModule,
