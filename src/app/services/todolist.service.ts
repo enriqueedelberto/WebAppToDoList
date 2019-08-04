@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -16,10 +17,17 @@ const urlApi = environment.url_Api;
 })
 export class TodolistService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private router: Router) {
     console.log('Service is ok');
    }
 
+//function for Redirecting
+  redirect(path: string) { 
+    this.router.navigate([path]);
+
+  }
+  
   getQuery(query: string) { 
     return this.http.get(urlApi, httpOptions);
   }

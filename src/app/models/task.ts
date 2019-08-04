@@ -1,12 +1,14 @@
 export class Task {  
-    cd_task: string;
-    id_task: string;
-    title_task: string;
-    desc_task: string;
-    status_task: string;
-    cd_user: string;
-    createdOnDate: Date;
-    lasModifiedOnDate: Date;
-    pageIndex: number;
-    pageSize: number;
+    constructor(public cd_task: string,
+        public id_task: string,
+        public title_task: string,
+        public desc_task: string,
+        public status_task: string,
+        public cd_user: string,
+        public createdOnDate: Date = new Date(),
+        public lasModifiedOnDate: Date = new Date(),
+        public pageIndex: number = 1,
+        public pageSize: number= 10) {  }
+
+     
  }

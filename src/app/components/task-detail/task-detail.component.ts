@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Task } from '../../models/task';
@@ -10,11 +10,17 @@ import { TodolistService } from 'src/app/services/todolist.service';
   styleUrls: ['./task-detail.component.css']
 })
 export class TaskDetailComponent implements OnInit {
-
+  task: Task;
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private service: TodolistService,
-    private location: Location) { }
+    private location: Location) {
+    
+    this.task = new Task('','','','','','');
+     }
+
+ 
 
   ngOnInit() {
   }
@@ -24,6 +30,8 @@ export class TaskDetailComponent implements OnInit {
   }
 
   save(): void { 
+    this.service.redirect('/home');
+    
     
   }
 
