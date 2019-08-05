@@ -1,3 +1,10 @@
+<div class="row">
+    <div class="col">
+        <input #title_task type="text" (keyup)="searchTaskByTitle(title_task.value)" class="form-control" placeholder="search by title">
+    </div>
+
+</div>
+
 <app-cards [items]="tasks">
 
 </app-cards>

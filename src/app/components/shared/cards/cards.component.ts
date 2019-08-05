@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TodolistService } from 'src/app/services/todolist.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cards',
@@ -10,9 +11,11 @@ export class CardsComponent  {
 
 
   @Input() items: any[] = [];
-  constructor( private service: TodolistService) { }
+  constructor(private service: TodolistService,
+    private router: Router ) { }
   
-  redirect(path:string) { 
+  redirect(path: string) { 
+    debugger;
     this.service.redirect(path);
   }
   

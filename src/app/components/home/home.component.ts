@@ -28,6 +28,20 @@ export class HomeComponent implements OnInit {
 
   }
 
+  searchTaskByTitle(title_task: string) { 
+    
+    let task = new Task(undefined, undefined, title_task, undefined, undefined, undefined); 
+
+    this.todoListservice.getAllTask(task, undefined, undefined).subscribe((data: any) => { 
+      console.log({ data });
+     this.tasks = data.data;
+    }, (errorService) => {
+      
+        console.log('Error in service');
+    });
+  }
+
+
   ngOnInit() {
   }
 

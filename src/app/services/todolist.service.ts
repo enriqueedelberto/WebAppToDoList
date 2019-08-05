@@ -42,7 +42,10 @@ export class TodolistService {
 
     // Begin assigning parameters
     if (task) {
-      params = params.append('task_id', task.id_task);
+      params = params.append('id_task', task.id_task);
+      params = params.append('title_task', task.title_task);
+      params = params.append('cd_task', task.cd_task);
+      params = params.append('desc_task', task.desc_task);
     }
     
 
