@@ -14,17 +14,21 @@ import { debug } from 'util';
 export class HomeComponent implements OnInit {
   tasks = TASKS;
   loading: boolean;
+  error: boolean;
+  messageError: string;
   constructor(private todoListservice: TodolistService) { 
     let task = new Task(undefined, undefined, undefined, undefined, undefined, undefined); 
     this.loading= true;
     this.todoListservice.getAllTask(task,  1,  4)
       .subscribe((data: any) => { 
-        console.log({ data });
+      
         this.tasks = data.data;
         this.loading = false;
       }, (errorService) => {
-        this.loading = false;
-          console.log('Error in service');
+          this.loading = false;
+          this.error = true;
+          this.messageError = errorService.message;
+          
       });
 
   }

@@ -52,9 +52,9 @@ export class TaskDetailComponent implements OnInit {
       this.lstUsers = data.data;
     }, (errorService) => {
       this.loading = false;
-        console.log('Error in service');
+         
         this.error = true;
-          this.messageError = errorService.error.error.message;
+          this.messageError = errorService.message;
       });
     
     //Get users to fill dropdown
@@ -87,7 +87,7 @@ export class TaskDetailComponent implements OnInit {
     this.loading = true;
     this.service.saveTask(this.task)
       .subscribe((data: any) => { 
-      console.log({ data });
+       
         this.service.redirect('/home');
         this.loading = false;
         
@@ -95,7 +95,7 @@ export class TaskDetailComponent implements OnInit {
         this.loading = false;
       this.error = true;
       this.messageError = errorService.message;
-        console.log('Error in service');
+       
     });
       
       

@@ -11,6 +11,9 @@ import { TASKS } from 'src/app/services/mock-service';
 export class SearchComponent implements OnInit {
   tasks = TASKS;
   loading: boolean;
+
+  error: boolean;
+  messageError: string;
   constructor(private todoListservice: TodolistService) { 
 
      
@@ -25,13 +28,16 @@ export class SearchComponent implements OnInit {
     let task = new Task(undefined, undefined, title_task, undefined, undefined, undefined); 
     this.loading = true;
     this.todoListservice.searchTaskByTitle(task, undefined, undefined).subscribe((data: any) => { 
-      console.log({ data });
+      
       this.loading = false;
       this.tasks = data.data;
      
     }, (errorService) => {
-      this.loading = false;
-        console.log('Error in service');
+        this.loading = false;
+        
+        this.error = true;
+        this.messageError = errorService.message;
+        
     });
   }
 
