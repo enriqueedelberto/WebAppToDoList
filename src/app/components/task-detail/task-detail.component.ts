@@ -34,13 +34,32 @@ export class TaskDetailComponent implements OnInit {
     pageSize: 10
      
   };
+
+  task_id = this.route.snapshot.paramMap.get('id_task');
   
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: TodolistService,
     private location: Location) {
+    
+    
     this.task = new Task('', '', '', '', '', '');
+
+    if (this.task_id) { 
+      this.task.id_task = this.task_id;
+      this.service.getAllTask(this.task, 1, 1)
+        .subscribe((data: any) => { 
+          
+        this.loading = false;
+        this.task = data.data[0];
+      }, (errorService) => {
+        this.loading = false;
+           
+          this.error = true;
+            this.messageError = errorService.message;
+        });
+    }
 
     let user = new User(null, null, null, null,null, null, null); 
     
@@ -57,14 +76,18 @@ export class TaskDetailComponent implements OnInit {
           this.messageError = errorService.message;
       });
     
+      
+    
     //Get users to fill dropdown
     this.service.getAllStatuses()
     .subscribe((data: any) => { 
       
       this.lstStatuses = data.data;
     }, (errorService) => {
-      
-        console.log('Error in service');
+      this.loading = false;
+         
+      this.error = true;
+        this.messageError = errorService.message;
     });
     
      }
@@ -85,6 +108,24 @@ export class TaskDetailComponent implements OnInit {
      }
       
     this.loading = true;
+   
+    if (this.task_id) { 
+      this.service.updateTask(this.task)
+      .subscribe((data: any) => { 
+       
+        this.service.redirect('/home');
+        this.loading = false;
+        
+      }, (errorService) => {
+        this.loading = false;
+      this.error = true;
+      this.messageError = errorService.message;
+       
+    }); 
+      return;
+
+    }
+
     this.service.saveTask(this.task)
       .subscribe((data: any) => { 
        

@@ -69,14 +69,13 @@ export class TodolistService {
   }
   
   saveTask(task: Task) { 
-    debugger
+    
   return this.http.post(`${urlApi}Task/saveTask`, task) ;
   }
 
  updateTask(task: Task) { 
-    debugger
-   this.http.post<Task>(`${urlApi}Task/updateTask`, task)
-      .subscribe(() => this.redirect('/home'));
+    
+   return this.http.post<Task>(`${urlApi}Task/updateTask`, task);
   }
 
    //Service GetAllTasks
