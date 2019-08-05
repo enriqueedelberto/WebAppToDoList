@@ -20,6 +20,7 @@ import { ROUTES } from './app.route';
 import { CardsComponent } from './components/shared/cards/cards.component';
 import { UsersComponent } from './components/users/users.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { TaskDetailComponent } from './components/task-detail/task-detail.compon
     NavbarComponent,
     CardsComponent,
     UsersComponent,
-    TaskDetailComponent
+    TaskDetailComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

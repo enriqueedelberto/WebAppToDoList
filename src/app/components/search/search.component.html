@@ -1,3 +1,11 @@
-<p>
-  search works!
-</p>
+<div class="row mb-5">
+    <div class="col">
+        <input #title_task type="text" (keyup)="searchTaskByTitle(title_task.value)" class="form-control" placeholder="search by title">
+    </div>
+
+</div>
+<app-loading *ngIf="loading"></app-loading>
+
+<app-cards [items]="tasks">
+
+</app-cards>

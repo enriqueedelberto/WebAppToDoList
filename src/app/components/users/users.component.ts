@@ -11,18 +11,19 @@ import { TodolistService } from 'src/app/services/todolist.service';
 })
 export class UsersComponent implements OnInit {
   users = USERS;
-
+  loading: boolean;
   @Input() items: any[] = [];
   constructor(private service: TodolistService) {
     
-    let user = new User(undefined, undefined, undefined, undefined,undefined, undefined, undefined); 
-
+    let user = new User(null, null, null, null,null, null, null); 
+    this.loading= true;
     this.service.getAllUsers(user,  1,  4)
       .subscribe((data: any) => { 
         console.log({ data });
         this.users = data.data;
+        this.loading= false;
       }, (errorService) => {
-        
+        this.loading= false;
           console.log('Error in service');
       });
    }

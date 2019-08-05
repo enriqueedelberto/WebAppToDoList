@@ -6,14 +6,14 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Task } from '../models/task';
-import { debug } from 'util';
+
 import { User } from '../models/user';
 
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const urlApi = environment.url_Api;
+const urlApi = `${environment.url_Api}/api/`;
 @Injectable({
   providedIn: 'root'
 })
@@ -41,12 +41,28 @@ export class TodolistService {
     let params = new HttpParams();
 
     // Begin assigning parameters
-    if (task) {
-      params = params.append('id_task', task.id_task);
-      params = params.append('title_task', task.title_task);
-      params = params.append('cd_task', task.cd_task);
-      params = params.append('desc_task', task.desc_task);
-    }
+    
+      params = params.append('id_task', task.id_task ? task.id_task :'');
+      params = params.append('title_task', task.title_task? task.title_task :'');
+      params = params.append('cd_task', task.cd_task? task.cd_task :'');
+      params = params.append('desc_task', task.desc_task? task.desc_task :'');
+   
+    
+
+    return this.http.get(`${urlApi}Task/GetTasks`, { params: params}); 
+  }
+
+  //Servicio GetAllTasks
+  searchTaskByTitle(task: Task, pageIndex:number = 1, pageSize: number = 5 ) {
+    
+    let params = new HttpParams();
+
+    // Begin assigning parameters
+     
+      
+      params = params.append('title_task', task.title_task? task.title_task :'');
+     
+    
     
 
     return this.http.get(`${urlApi}Task/GetTasks`, { params: params}); 
@@ -59,7 +75,7 @@ export class TodolistService {
 
  updateTask(task: Task) { 
     debugger
-   this.http.post<Task>(`${urlApi}Task/saveTask`, task)
+   this.http.post<Task>(`${urlApi}Task/updateTask`, task)
       .subscribe(() => this.redirect('/home'));
   }
 
