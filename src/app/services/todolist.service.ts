@@ -51,8 +51,7 @@ export class TodolistService {
   
   saveTask(task: Task) { 
     debugger
-   this.http.post<Task>(`${urlApi}Task/saveTask`, task)
-      .subscribe(() => this.redirect('/home'));
+  return this.http.post(`${urlApi}Task/saveTask`, task) ;
   }
 
  updateTask(task: Task) { 
@@ -61,7 +60,7 @@ export class TodolistService {
       .subscribe(() => this.redirect('/home'));
   }
 
-   //Servicio GetAllTasks
+   //Service GetAllTasks
    getAllUsers(user: User, pageIndex:any = "1", pageSize: any = "5" ) {
     
     let params = new HttpParams();
@@ -73,6 +72,13 @@ export class TodolistService {
     
 
     return this.http.get(`${urlApi}User/GetUsers`, { params: params}); 
+   }
+  
+   //Service GetAllStatuses
+   getAllStatuses() {
+    
+     
+    return this.http.get(`${urlApi}Task/GetStatuses`); 
   }
   
 

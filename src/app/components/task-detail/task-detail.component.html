@@ -21,7 +21,7 @@
                 <label for="inputState">Status</label>
                 <select id="inputState" class="form-control" [(ngModel)]="task.status_task" [ngModelOptions]="{standalone: true}">
           <option selected>Choose...</option>
-          <option>...</option>
+          <option *ngFor="let status of lstStatuses ">{{status}}</option>
         </select>
             </div>
 
@@ -29,7 +29,7 @@
                 <label for="inputState">Assign to</label>
                 <select id="inputState" class="form-control" [(ngModel)]="task.cd_user" [ngModelOptions]="{standalone: true}">
           <option selected>Choose...</option>
-          <option>...</option>
+          <option *ngFor="let user of lstUsers " value="{{user.cd_user}}">{{user.nm_user}}</option>
         </select>
             </div>
 
